@@ -3,6 +3,7 @@ import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import "../styles/Form.css";
+import LoadingIndicator from "./LoadingIndicator";
 
 // A generic form component that can be used for both login and registration
 // route = API endpoint, method = form type ('login' or 'register')
@@ -53,6 +54,7 @@ function Form({ route, method }) {
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
       />
+      {loading && <LoadingIndicator />}
       <button className="form-button" type="submit" disabled={loading}>
         {name}
       </button>
