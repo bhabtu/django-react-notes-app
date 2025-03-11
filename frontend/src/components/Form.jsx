@@ -37,6 +37,15 @@ function Form({ route, method }) {
     }
   };
 
+  const handleRedirect = () => {
+    // Navigate to the opposite page (login <-> register)
+    if (method === "login") {
+      navigate("/register");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} className="form-container">
       <h1>{name}</h1>
@@ -57,6 +66,15 @@ function Form({ route, method }) {
       {loading && <LoadingIndicator />}
       <button className="form-button" type="submit" disabled={loading}>
         {name}
+      </button>
+      <button
+        type="button"
+        onClick={handleRedirect}
+        className="form-button form-button-redirect"
+      >
+        {method === "login"
+          ? "Don't have an account?"
+          : "Already have an account?"}
       </button>
     </form>
   );
