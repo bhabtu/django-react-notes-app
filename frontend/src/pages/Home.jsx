@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import Note from "../components/Note";
 import "../styles/Home.css";
 import useNotes from "../hooks/useNotes";
+import { useNavigate } from "react-router-dom";
+import { REFRESH_TOKEN, ACCESS_TOKEN } from "../constants";
 
 function Home() {
   const {
@@ -11,6 +13,17 @@ function Home() {
     formHandlers: { handleTitleChange, handleContentChange },
   } = useNotes();
 
+  const navigate = useNavigate();
+
+  const logout = () => {
+    // Remove tokens from localStorage
+    localStorage.removeItem(ACCESS_TOKEN);
+    localStorage.removeItem(REFRESH_TOKEN);
+
+    // Navigate to the login page
+    navigate("/login");
+  };
+
   // Fetch all user notes when the component mounts
   useEffect(() => {
     getNotes();
@@ -18,6 +31,11 @@ function Home() {
 
   return (
     <div>
+      <div className="logout-container">
+        <button onClick={logout} className="logout-button">
+          Logout
+        </button>
+      </div>
       <div className="form-container">
         <h2>{editingNoteId ? "Edit Your Note" : "Create a Note"}</h2>
         <form onSubmit={editingNoteId ? updateNote : createNote}>
