@@ -14,7 +14,7 @@ function Home() {
   // Fetch all user notes when the component mounts
   useEffect(() => {
     getNotes();
-  }, [getNotes]); // The effect runs once when the component mounts or when getNotes changes
+  }, []); // The effect runs once when the component mounts
 
   return (
     <div>
