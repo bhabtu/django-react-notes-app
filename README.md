@@ -2,7 +2,10 @@
 
 ## Overview
 
-This project is a full-stack **notetaking application** built with **Django (Django REST Framework) for the backend** and **React (Vite) for the frontend**. The goal was to refresh and reinforce my understanding of Django and React integration, authentication with JWT, and CRUD operations in React.
+This project is a full-stack **notetaking application** built with **Django (Django 
+REST Framework) for the backend** and **React (Vite) for the frontend**. The goal 
+was to refresh and reinforce my understanding of Django and React integration, 
+authentication with JWT, and CRUD operations in React.
 
 ### Key Learning Goals:
 - Integrating Django with React using a **REST API**
@@ -10,7 +13,8 @@ This project is a full-stack **notetaking application** built with **Django (Dja
 - Managing authentication state with **access and refresh tokens**
 - Performing **CRUD operations** for notes
 
-Users must **register and log in** to access the application, after which they can **create, update, and delete notes**.
+Users must **register and log in** to access the application, after which they 
+can **create, update, and delete notes**.
 
 ## Features
 
@@ -27,6 +31,7 @@ Users must **register and log in** to access the application, after which they c
 - Django
 - Django REST Framework
 - Simple JWT (for authentication)
+- PostgreSQL
 
 ### Frontend:
 
@@ -66,6 +71,17 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
+Create a `.env` file in `django-react-notes-app\backend\` and provide the following 
+database configuration, replacing the values with your own PostgreSQL credentials:
+
+```
+DB_NAME=""
+DB_USER=""
+DB_PWD=""
+DB_HOST=""
+DB_PORT=""
+```
+
 Run database migrations:
 
 ```sh
@@ -94,6 +110,13 @@ Install dependencies:
 npm install
 ```
 
+Create a `.env` file in `django-react-notes-app\frontend\` and provide the following 
+default configuration:
+
+```
+VITE_API_URL="http://127.0.0.1:8000"
+```
+
 Start the frontend server:
 
 ```sh
@@ -102,7 +125,8 @@ npm run dev
 
 The frontend will be running at **[http://localhost:5173/](http://localhost:5173/)**.
 
-**Note:** You need to keep **two terminals** open—one for the backend and one for the frontend, both running simultaneously.
+**Note:** You need to keep **two terminals** open—one for the backend and one for 
+the frontend, both running simultaneously.
 
 ---
 
@@ -111,8 +135,10 @@ The frontend will be running at **[http://localhost:5173/](http://localhost:5173
 1. **User Authentication**:
 
    - When a user visits `http://localhost:5173/`, they are redirected to the login page.
-   - If they are new, they can **register**, which creates an account and assigns JWT access/refresh tokens.
-   - After logging in, the tokens are stored in the browser, allowing authenticated access to the app.
+   - If they are new, they can **register**, which creates an account and assigns 
+   JWT access/refresh tokens.
+   - After logging in, the tokens are stored in the browser, allowing authenticated 
+   access to the app.
 
 2. **Notes Management**:
 
@@ -121,7 +147,8 @@ The frontend will be running at **[http://localhost:5173/](http://localhost:5173
 
 3. **Logout**:
 
-   - Users can log out, which **removes authentication tokens** and redirects them back to the login page.
+   - Users can log out, which **removes authentication tokens** and redirects them 
+   back to the login page.
 
 ---
 
